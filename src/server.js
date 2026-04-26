@@ -2,7 +2,8 @@ import express from "express";
 
 import config from "./config/config.js";
 import productRoute from "./routes/product.route.js";
-// import userRoute from "./routes/user.route.js";
+import userRoute from "./routes/user.route.js";
+import authRoute from "./routes/auth.route.js";
 import connectDB from "./config/database.js";
 import bodyParser from "body-parser";
 
@@ -29,7 +30,8 @@ app.post("/contact", (req, res) => {
 });
 
 app.use("/api/product", productRoute);
-// app.use("/api/users", userRoute);
+app.use("/api/users", userRoute);
+app.use("/api/auth", authRoute);
 
 app.listen(config.port, () => {
   console.log(`Server running at port ${config.port}...`);
