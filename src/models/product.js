@@ -6,6 +6,7 @@ const productSchema = new mongoose.Schema({
     required: [true, "Product name is required."],
     minLength: 3,
     maxLength: 50,
+    unique: true,
   },
   brand: {
     type: String,

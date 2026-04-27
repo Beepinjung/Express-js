@@ -65,8 +65,13 @@ const register = async (req, res) => {
     }
 
     const user = await authService.register(input);
+    const token = jwt.createToken(user);
 
-    res.json(user);
+    res.cookie("authToken", token, {
+      maxAge: 86400 * 1000,
+    });
+
+    res.json({ ...user, token });
   } catch (error) {
     res.status(error.status || 400).send(error.message);
   }

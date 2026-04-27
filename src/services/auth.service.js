@@ -22,7 +22,15 @@ const login = async (data) => {
     };
   }
 
-  return user;
+    return {
+    _id: user._id,
+    address: user.address,
+    email: user.email,
+    isActive: user.isActive,
+    name: user.name,
+    phone: user.phone,
+    roles: user.roles,
+  };
 };
 
 const register = async (data) => {
@@ -44,6 +52,15 @@ const register = async (data) => {
     ...data,
     password: hashedPassword,
   });
+  return {
+    _id: createdUser._id,
+    address: createdUser.address,
+    email: createdUser.email,
+    isActive: createdUser.isActive,
+    name: createdUser.name,
+    phone: createdUser.phone,
+    roles: createdUser.roles,
+  };
 };
 
 export default { register, login };
